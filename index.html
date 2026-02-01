@@ -20,13 +20,14 @@
 
     <!-- Solar System Visualization -->
     <section class="solar-system" aria-label="Solar system visualization">
+      <canvas id="starfield"></canvas>
+
       <div class="sun">
 
       </div>
-      <canvas id="starCanvas"></canvas>
-  <div id="planetContainer">
+     
 
-  </div>
+  
 
 <div class="orbit mercury-orbit">
   <div class="planet-wrapper">
@@ -76,15 +77,7 @@
   </div>
 </div>
       
-      <!-- Planets -->
-      <button class="planet mercury" data-planet="mercury" aria-label="Mercury"></button>
-      <button class="planet venus" data-planet="venus" aria-label="Venus"></button>
-      <button class="planet earth" data-planet="earth" aria-label="Earth"></button>
-      <button class="planet mars" data-planet="mars" aria-label="Mars"></button>
-      <button class="planet jupiter" data-planet="jupiter" aria-label="Jupiter"></button>
-      <button class="planet saturn" data-planet="saturn" aria-label="Saturn"></button>
-      <button class="planet uranus" data-planet="uranus" aria-label="Uranus"></button>
-      <button class="planet neptune" data-planet="neptune" aria-label="Neptune"></button>
+     
     </section>
 <!-- Planet Info Panel -->
     <aside class="planet-info" aria-live="polite">
@@ -94,9 +87,9 @@
         id="planet-image"
         src="assets/images/placeholder.jpg"
         alt="Planet preview"
-        width="300"
-        height="300"
+        
       />
+      <ul class="planet-stats"></ul>
 
        <p id="planet-fact" class="planet-fact">
         Click on a planet to learn more about it.
@@ -110,8 +103,9 @@
   </footer>
 
   
-  <script src="js/data.js"></script>
-  <script type="module" src=".js/app.js"></script>
+  
+  <script type="module" src="./js/app.js"></script>
+
 
 </body>
 </html>

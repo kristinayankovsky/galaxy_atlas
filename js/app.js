@@ -1,36 +1,66 @@
-// Get canvas
-const canvas = document.getElementById("starCanvas");
+// js/app.js
+
+import { planets } from "./data.js";
+import { updatePlanetInfo, setActivePlanet } from "./ui.js";
+
+function init() {
+  const planetButtons = document.querySelectorAll(".planet");
+
+  document.querySelectorAll(".planet").forEach(p =>
+  p.classList.remove("active")
+);
+
+  planetButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const planetId = button.dataset.planet;
+      const planetData = planets.find(p => p.id === planetId);
+
+      if (!planetData) return;
+
+      updatePlanetInfo(planetData);
+      setActivePlanet(button);
+    });
+  });
+
+
+}
+
+document.addEventListener("DOMContentLoaded", init);
+
+const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
 
-// Resize canvas to full screen
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+   const parent = canvas.parentElement;
+  canvas.width = parent.clientWidth;
+  canvas.height = parent.clientHeight;
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
 
-// Generate random stars
-const stars = Array.from({ length: 300 }, () => ({
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+const stars = Array.from({ length: 120 }, () => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
-  size: Math.random() * 2 + 1,
-  twinkle: Math.random() * Math.PI * 2
+  r: Math.random() * 1.5,
+  speed: Math.random() * 0.2 + 0.05
 }));
 
-// Draw and animate stars
-function drawStars() {
+function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  ctx.fillStyle = "white";
   stars.forEach(star => {
-    const brightness = 0.5 + Math.sin(Date.now() / 500 + star.twinkle) / 2;
+    star.y += star.speed;
+    if (star.y > canvas.height) star.y = 0;
+
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${brightness})`;
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
     ctx.fill();
   });
 
-  requestAnimationFrame(drawStars);
+  requestAnimationFrame(animateStars);
 }
 
-drawStars();
+animateStars();
+

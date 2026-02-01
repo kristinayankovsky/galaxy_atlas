@@ -1,31 +1,28 @@
-export function createStars(canvas, stars) {
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// js/ui.js
 
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-    ctx.fillStyle = "#fff";
-    ctx.fill();
-  });
+export function updatePlanetInfo(planet) {
+  const title = document.querySelector(".planet-info h2");
+  const img = document.querySelector(".planet-info img");
+  const stats = document.querySelector(".planet-stats");
+  const fact = document.querySelector(".planet-fact");
+
+  title.textContent = planet.name;
+  img.src = planet.image;
+  img.alt = planet.name;
+
+  stats.innerHTML = `
+    <li><strong>Radius:</strong> ${planet.radius}</li>
+    <li><strong>Distance:</strong> ${planet.distance}</li>
+    <li><strong>Year Length:</strong> ${planet.year}</li>
+  `;
+
+  fact.textContent = planet.fact;
 }
-export function animateStars(canvas, stars) {
-  const ctx = canvas.getContext("2d");
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    stars.forEach(star => {
-      
-      const brightness = 0.5 + Math.sin(Date.now() / 500 + star.twinkle * 10) / 2;
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${brightness})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  draw();
+export function setActivePlanet(element) {
+  document.querySelectorAll(".planet").forEach(p =>
+    p.classList.remove("active")
+  );
+  element.classList.add("active");
 }
+
