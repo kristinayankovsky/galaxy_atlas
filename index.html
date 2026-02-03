@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
      <header class="site-header">
@@ -19,7 +21,11 @@
     <main class="main-layout">
 
     <!-- Solar System Visualization -->
-    <section class="solar-system" aria-label="Solar system visualization">
+    <section 
+    class="solar-system" 
+    aria-label="Solar system visualization"
+    tabindex="0"
+    >
       <canvas id="starfield"></canvas>
 
       <div class="sun">
@@ -94,12 +100,15 @@
        <p id="planet-fact" class="planet-fact">
         Click on a planet to learn more about it.
       </p>
+       <li id="user-tip" class="user-tip"><b><em>Tip: </b>use arrow keys or click a planet</li></em>
     </aside>
 
   </main>
  
   <footer class="site-footer">
     <p>Built by Kristina • Galaxy Atlas Project</p>
+    <a href="https://www.linkedin.com/in/kristina-yankovsky-691b282a2/" class="fa fa-linkedin"></a>
+    <a href="https://github.com/kristinayankovsky" class="fa fa-github"></a>
   </footer>
 
   

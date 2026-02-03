@@ -22,6 +22,11 @@ body {
   flex-direction: column;
 }
 
+/* tip */
+.user-tip {
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+}
 
 
 
@@ -62,6 +67,8 @@ body {
   border-radius: 16px;
   overflow: visible;
 }
+
+/*stars*/
 .stars,
 #starfield {
   position: absolute;
@@ -172,7 +179,8 @@ body {
   z-index: 15;
 }
 
-.orbit .planet:hover {
+.orbit .planet:hover,
+.orbit .planet.active {
   transform: translate(-50%, -50%) scale(1.25);
   box-shadow: 0 0 15px var(--accent);
 }
@@ -210,6 +218,36 @@ body {
 .planet-info.active {
   opacity: 1;
 }
+
+/* social icons*/
+.fa {
+  padding: 5px;
+  font-size: 20px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  text-decoration: none;
+  justify-content: center;
+  margin-top: 25px;
+ 
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-linkedin {
+  background: #2b6cff;
+  color: white;
+  justify-content: center;
+}
+
+.fa-github {
+  background: black;
+  color: white;
+  justify-content: center;
+}
+
 
 /* footer */
 .site-footer {
